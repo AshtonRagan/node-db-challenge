@@ -6,7 +6,9 @@ module.exports = {
 };
 
 function getall() {
-  return db("Tasks");
+  return db("Tasklist")
+    .join("Tasks", "Tasklist.Task_id", "Tasks.id")
+    .join("Projects", "Tasklist.project_id", "Projects.id");
 }
 
 function add(body) {
